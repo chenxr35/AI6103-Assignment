@@ -65,7 +65,7 @@ def calculate_mean_std(train_dataset, train_idx):
 
 
 def get_train_valid_loader(dataset_dir, batch_size, augment, random_seed, save_images):
-    train_dataset = datasets.cifar.CIFAR100(root='cifar100', train=True, transform=None, download=True)
+    train_dataset = datasets.cifar.CIFAR100(root='cifar100', train=True, transform=None, download=False)
 
     train_idx, valid_idx = random_train_val_split(train_dataset, 0.2, random_seed)
 
@@ -93,7 +93,7 @@ def get_train_valid_loader(dataset_dir, batch_size, augment, random_seed, save_i
 
 def get_test_loader(dataset_dir, batch_size):
     
-    test_dataset = datasets.cifar.CIFAR100(root='cifar100', train=False, transform=None, download=True)
+    test_dataset = datasets.cifar.CIFAR100(root='cifar100', train=False, transform=None, download=False)
 
     test_idx = [i for i in range(len(test_dataset))]
 
