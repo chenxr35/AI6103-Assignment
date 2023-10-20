@@ -1,0 +1,17 @@
+INFO:root:Epoch 1/15.. Learning rate: 0.0100.. Train loss: 4.4190.. Train acc: 0.0346.. Val loss: 4.1217.. Val acc: 0.0770
+INFO:root:Epoch 2/15.. Learning rate: 0.0100.. Train loss: 3.8368.. Train acc: 0.1052.. Val loss: 3.6621.. Val acc: 0.1302
+INFO:root:Epoch 3/15.. Learning rate: 0.0100.. Train loss: 3.4859.. Train acc: 0.1604.. Val loss: 3.4663.. Val acc: 0.1626
+INFO:root:Epoch 4/15.. Learning rate: 0.0100.. Train loss: 3.2013.. Train acc: 0.2074.. Val loss: 3.2789.. Val acc: 0.1997
+INFO:root:Epoch 5/15.. Learning rate: 0.0100.. Train loss: 2.9563.. Train acc: 0.2546.. Val loss: 3.2095.. Val acc: 0.2208
+INFO:root:Epoch 6/15.. Learning rate: 0.0100.. Train loss: 2.7296.. Train acc: 0.2995.. Val loss: 3.1647.. Val acc: 0.2384
+INFO:root:Epoch 7/15.. Learning rate: 0.0100.. Train loss: 2.5244.. Train acc: 0.3408.. Val loss: 3.1366.. Val acc: 0.2514
+INFO:root:Epoch 8/15.. Learning rate: 0.0100.. Train loss: 2.3408.. Train acc: 0.3757.. Val loss: 3.1916.. Val acc: 0.2570
+INFO:root:Epoch 9/15.. Learning rate: 0.0100.. Train loss: 2.1401.. Train acc: 0.4206.. Val loss: 3.2509.. Val acc: 0.2580
+INFO:root:Epoch 10/15.. Learning rate: 0.0100.. Train loss: 1.9781.. Train acc: 0.4583.. Val loss: 3.3183.. Val acc: 0.2553
+INFO:root:Epoch 11/15.. Learning rate: 0.0100.. Train loss: 1.8086.. Train acc: 0.4968.. Val loss: 3.4499.. Val acc: 0.2550
+INFO:root:Epoch 12/15.. Learning rate: 0.0100.. Train loss: 1.6505.. Train acc: 0.5331.. Val loss: 3.5088.. Val acc: 0.2574
+INFO:root:Epoch 13/15.. Learning rate: 0.0100.. Train loss: 1.4775.. Train acc: 0.5753.. Val loss: 3.6156.. Val acc: 0.2613
+INFO:root:Epoch 14/15.. Learning rate: 0.0100.. Train loss: 1.3110.. Train acc: 0.6198.. Val loss: 3.7472.. Val acc: 0.2621
+INFO:root:Epoch 15/15.. Learning rate: 0.0100.. Train loss: 1.1630.. Train acc: 0.6554.. Val loss: 3.8388.. Val acc: 0.2666
+INFO:root:Test loss: 0.00746262026950717
+INFO:root:Test acc: 0.2674
