@@ -5,17 +5,6 @@ from mobilenet import MobileNet
 from utils import plot_loss_acc
 from dataloader import get_train_valid_loader, get_test_loader
 
-def mixup_data(x, y, alpha=0.2):
-    lam = np.random.beta(alpha, alpha)
-    batch_size = x.size()[0]
-    index = torch.randperm(batch_size).cuda()
-    mixed_x = lam * x + (1 - lam) * x[index, :]
-    y_a, y_b = y, y[index]
-    return mixed_x, y_a, y_b, lam
-
-def mixup_criterion(pred, y_a, y_b, lam):
-    criterion = torch.nn.CrossEntropyLoss().cuda()
-    return lam * criterion(pred, y_a) + (1 - lam) * criterion(pred, y_b)
 
 def main(args):
 
@@ -62,12 +51,14 @@ def main(args):
             for imgs, labels in train_loader:
                 imgs = imgs.cuda()
                 labels = labels.cuda()
-                mixed_x, y_a, y_b, lam = mixup_data(imgs, labels)
+                lam = np.random.beta(0.2, 0.2)
+                index = torch.randperm(imgs.size(0)).cuda()
+                mixed_x = lam * imgs + (1 - lam) * imgs[index, :]
 
                 batch_size = mixed_x.shape[0]
                 optimizer.zero_grad()
                 logits = model.forward(mixed_x)
-                loss = mixup_criterion(logits, y_a, y_b, lam)
+                loss = lam * criterion(logits, labels) + (1 - lam) * criterion(logits, labels[index])
                 loss.backward()
                 optimizer.step()
                 _, top_class = logits.topk(1, dim=1)
