@@ -147,7 +147,7 @@ def main(args):
         logging.info(f'Test loss: {test_loss/test_samples}')
         logging.info(f'Test acc: {test_acc/test_samples}')
 
-    lr_fig_name = f"lr:{args.lr}_wd:{args.wd}_eps:{args.epochs}_scheduler:{args.lr_scheduler}_mixup:{args.mixup}_LearningRateCurve.png"
+    lr_fig_name = "learning_curve.png"
     plot_lr(stat_lr, lr_fig_name)
 
 
