@@ -4,7 +4,6 @@ import numpy as np
 from mobilenet import MobileNet
 from utils import plot_loss_acc
 from dataloader import get_train_valid_loader, get_test_loader
-import logging
 
 def mixup_data(x, y, alpha=0.2):
     lam = np.random.beta(alpha, alpha)
@@ -19,15 +18,6 @@ def mixup_criterion(pred, y_a, y_b, lam):
     return lam * criterion(pred, y_a) + (1 - lam) * criterion(pred, y_b)
 
 def main(args):
-
-    os.makedirs("log", exist_ok=True)
-
-    # logging
-    log_file = f"log/lr{args.lr}_wd{args.wd}_eps{args.epochs}_scheduler{args.lr_scheduler}_mixup{args.mixup}.log"
-    logging.basicConfig(level=logging.INFO, filename=log_file, filemode='w')
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    logging.getLogger('').addHandler(console)
 
     # fix random seeds
     torch.manual_seed(args.seed)
@@ -119,7 +109,7 @@ def main(args):
         stat_training_acc.append(training_acc/training_samples)
         stat_val_acc.append(val_acc/val_samples)
         # print
-        logging.info(f"Epoch {(epoch+1):d}/{args.epochs:d}.. Learning rate: {scheduler.get_lr()[0]:.4f}.. Train loss: {(training_loss/training_samples):.4f}.. Train acc: {(training_acc/training_samples):.4f}.. Val loss: {(val_loss/val_samples):.4f}.. Val acc: {(val_acc/val_samples):.4f}")
+        print(f"Epoch {(epoch+1):d}/{args.epochs:d}.. Learning rate: {scheduler.get_lr()[0]:.4f}.. Train loss: {(training_loss/training_samples):.4f}.. Train acc: {(training_acc/training_samples):.4f}.. Val loss: {(val_loss/val_samples):.4f}.. Val acc: {(val_acc/val_samples):.4f}")
         # lr scheduler
         scheduler.step()
     # plot
@@ -139,8 +129,8 @@ def main(args):
             test_loss += batch_size * test_loss.item()
             test_samples += batch_size
         assert test_samples == 10000
-        logging.info(f'Test loss: {test_loss/test_samples}')
-        logging.info(f'Test acc: {test_acc/test_samples}')
+        print(f'Test loss: {test_loss/test_samples}')
+        print(f'Test acc: {test_acc/test_samples}')
 
 
 if __name__ == '__main__':
