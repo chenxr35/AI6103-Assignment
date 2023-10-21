@@ -1,11 +1,8 @@
 import os
 import torch
-import torchvision
-import torchvision.transforms as transforms
-from torchvision.transforms import v2
 import numpy as np
 from mobilenet import MobileNet
-from utils import plot_loss_acc, plot_lr
+from utils import plot_loss_acc
 from dataloader import get_train_valid_loader, get_test_loader
 import logging
 
@@ -62,7 +59,6 @@ def main(args):
     stat_val_loss = []
     stat_training_acc = []
     stat_val_acc = []
-    stat_lr = []
     for epoch in range(args.epochs):
         training_loss = 0
         training_acc = 0
@@ -122,7 +118,6 @@ def main(args):
         stat_val_loss.append(val_loss/val_samples)
         stat_training_acc.append(training_acc/training_samples)
         stat_val_acc.append(val_acc/val_samples)
-        stat_lr.append(scheduler.get_lr()[0])
         # print
         logging.info(f"Epoch {(epoch+1):d}/{args.epochs:d}.. Learning rate: {scheduler.get_lr()[0]:.4f}.. Train loss: {(training_loss/training_samples):.4f}.. Train acc: {(training_acc/training_samples):.4f}.. Val loss: {(val_loss/val_samples):.4f}.. Val acc: {(val_acc/val_samples):.4f}")
         # lr scheduler
@@ -146,9 +141,6 @@ def main(args):
         assert test_samples == 10000
         logging.info(f'Test loss: {test_loss/test_samples}')
         logging.info(f'Test acc: {test_acc/test_samples}')
-
-    lr_fig_name = "learning_curve.png"
-    plot_lr(stat_lr, lr_fig_name)
 
 
 if __name__ == '__main__':
