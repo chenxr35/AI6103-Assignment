@@ -28,7 +28,7 @@ def plot_loss_acc(train_loss, val_loss, train_acc, val_acc, fig_name):
     labs = [l.get_label() for l in lns]
     ax2.legend(lns, labs, loc=0)
 
-    fig.tight_layout()
+    # fig.tight_layout()
     fig_title = ' '.join(fig_name[:-4].split('-'))
     plt.title(fig_title)
     plt.grid(True)
