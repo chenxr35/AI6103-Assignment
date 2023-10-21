@@ -26,7 +26,7 @@ def main(args):
     os.makedirs("log", exist_ok=True)
 
     # logging
-    log_file = f"log/lr:{args.lr}_wd:{args.wd}_eps:{args.epochs}_scheduler:{args.lr_scheduler}_mixup:{args.mixup}.log"
+    log_file = f"log/lr{args.lr}_wd{args.wd}_eps{args.epochs}_scheduler{args.lr_scheduler}_mixup{args.mixup}.log"
     logging.basicConfig(level=logging.INFO, filename=log_file, filemode='w')
     console = logging.StreamHandler()
     console.setLevel(logging.INFO)
