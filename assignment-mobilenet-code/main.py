@@ -1,8 +1,5 @@
 import os
 import torch
-import torchvision
-import torchvision.transforms as transforms
-from torchvision.transforms import v2
 import numpy as np
 from mobilenet import MobileNet
 from utils import plot_loss_acc, plot_lr

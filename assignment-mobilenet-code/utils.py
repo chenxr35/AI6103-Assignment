@@ -3,7 +3,6 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-# import torch
 
 def plot_loss_acc(train_loss, val_loss, train_acc, val_acc, fig_name):
     x = np.arange(len(train_loss))
@@ -13,15 +12,15 @@ def plot_loss_acc(train_loss, val_loss, train_acc, val_acc, fig_name):
     ax1.set_xlabel('epoch')
     ax1.set_ylabel('loss')
     ax1.set_ylim([0,max_loss+1])
-    lns1 = ax1.plot(x, train_loss, 'y--', label='train_loss', linewidth=1.5)
-    lns2 = ax1.plot(x, val_loss, 'g--', label='val_loss', linewidth=1.5)
+    lns1 = ax1.plot(x, train_loss, 'y-.', label='train_loss', linewidth=1.5)
+    lns2 = ax1.plot(x, val_loss, 'g-.', label='val_loss', linewidth=1.5)
     # ax1.tick_params(axis='y', labelcolor='tab:blue')
 
     ax2 = ax1.twinx()
     ax2.set_ylabel('accuracy')
     ax2.set_ylim([0,1.1])
-    lns3 = ax2.plot(x, train_acc, 'b--', label='train_acc', linewidth=1.5)
-    lns4 = ax2.plot(x, val_acc, 'r--', label='val_acc', linewidth=1.5)
+    lns3 = ax2.plot(x, train_acc, 'b-.', label='train_acc', linewidth=1.5)
+    lns4 = ax2.plot(x, val_acc, 'r-.', label='val_acc', linewidth=1.5)
     # ax2.tick_params(axis='y', labelcolor='tab:red')
 
     lns = lns1+lns2+lns3+lns4
@@ -29,8 +28,6 @@ def plot_loss_acc(train_loss, val_loss, train_acc, val_acc, fig_name):
     ax2.legend(lns, labs, loc=0)
 
     # fig.tight_layout()
-    fig_title = ' '.join(fig_name[:-4].split('-'))
-    plt.title(fig_title)
     plt.grid(True)
 
     plt.savefig(os.path.join('./diagram', fig_name))
